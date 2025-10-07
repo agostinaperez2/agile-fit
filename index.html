@@ -1,59 +1,18 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Agile Fit • Activewear</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #fff;
-      color: #111;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      min-height: 100vh;
-      text-align: center;
-    }
-    img {
-      width: 240px;
-      height: auto;
-      margin-bottom: 2rem;
-      border-radius: 6px;
-    }
-    button {
-      background: #111;
-      color: #fff;
-      border: none;
-      padding: 14px 32px;
-      font-size: 1rem;
-      cursor: pointer;
-      letter-spacing: 1px;
-      transition: background 0.3s;
-    }
-    button:hover {
-      background: #333;
-    }
-    footer {
-      position: absolute;
-      bottom: 15px;
-      font-size: 0.85rem;
-      color: #888;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css"/>
 </head>
-<body>
-
-  <!-- Logo -->
-  <img src="https://github.com/agostinaperez2/agile-fit/blob/main/ChatGPT%20Image%207%20oct%202025,%2004_56_26%20p.m..png?raw=true" alt="Agile Fit Activewear">
-
-  <!-- Botón principal -->
-  <button onclick="window.location.href='catalogo.html'">Ver colección</button>
-
-  <!-- Footer -->
-  <footer>© 2025 Agile Fit Activewear — Todos los derechos reservados</footer>
-
+<body class="landing">
+  <main class="hero">
+    <img class="logo"
+      src="https://github.com/agostinaperez2/agile-fit/blob/main/ChatGPT%20Image%207%20oct%202025,%2004_56_26%20p.m..png?raw=true"
+      alt="Agile Fit Activewear"/>
+    <button class="btn" onclick="location.href='catalogo.html'">Ver colección</button>
+  </main>
+  <footer class="footer">© 2025 Agile Fit Activewear — Todos los derechos reservados</footer>
 </body>
 </html>
