@@ -1,154 +1,95 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Agile Fit - Colección</title>
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #fff;
-      color: #111;
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      text-align: center;
-      padding: 30px 10px;
-      border-bottom: 1px solid #eee;
-    }
-    header h1 {
-      font-weight: 400;
-      letter-spacing: 1px;
-      margin-bottom: 8px;
-    }
-    header a {
-      text-decoration: none;
-      color: #666;
-      font-size: 0.9rem;
-    }
-    .coleccion {
-      padding: 50px 20px;
-      text-align: center;
-    }
-    h2 {
-      font-weight: 300;
-      margin-bottom: 30px;
-      letter-spacing: 1px;
-    }
-    .productos {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 30px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    .producto {
-      border: 1px solid #eee;
-      padding: 15px;
-      transition: 0.2s;
-    }
-    .producto:hover {
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      transform: translateY(-3px);
-    }
-    .producto img {
-      width: 100%;
-      height: 280px;
-      object-fit: cover;
-    }
-    .nombre {
-      margin: 10px 0 5px;
-      font-weight: 500;
-    }
-    .precio {
-      color: #666;
-      margin-bottom: 10px;
-    }
-    button {
-      background: #111;
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      cursor: pointer;
-      transition: 0.3s;
-      font-size: 0.9rem;
-    }
-    button:hover {
-      background: #333;
-    }
-    footer {
-      text-align: center;
-      margin: 60px 0 20px;
-      color: #999;
-      font-size: 0.9em;
-    }
-  </style>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Agile Fit • Colección</title>
+<style>
+  :root{--black:#111;--muted:#777}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial;background:#fff;color:#111}
+  header{position:sticky;top:0;background:#fff;border-bottom:1px solid #eee;z-index:10}
+  .container{max-width:1120px;margin:0 auto;padding:0 16px}
+  .header-in{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+  .brand{display:flex;align-items:center;gap:8px}
+  .brand img{height:28px}
+  .nav button{background:none;border:none;cursor:pointer;padding:10px 8px;margin:0 6px;border-bottom:2px solid transparent;letter-spacing:2px}
+  .nav button.active{border-color:var(--black)}
+  .muted{color:var(--muted)}
+  h2{font-weight:400;letter-spacing:1px;margin:24px 0 8px}
+  .grid{display:grid;gap:24px;grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+  .card{border:1px solid #eee;padding:12px;transition:.2s}
+  .card:hover{box-shadow:0 2px 10px rgba(0,0,0,.08);transform:translateY(-2px)}
+  .card img{width:100%;height:260px;object-fit:cover;background:#f5f5f5}
+  .row{display:flex;align-items:center;gap:8px}
+  .input{width:100%;padding:10px;border:1px solid #ddd}
+  .btn{padding:10px 14px;border:1px solid var(--black);background:var(--black);color:#fff;cursor:pointer}
+  .btn.secondary{background:#fff;color:var(--black)}
+  .toolbar{display:flex;gap:8px;align-items:center;justify-content:space-between;margin:10px 0 18px}
+  .pill{font-size:.9rem;border:1px solid #e8e8e8;padding:6px 10px;border-radius:999px}
+  .footer{border-top:1px solid #eee;margin-top:40px;padding:24px 0;color:var(--muted);font-size:14px;text-align:center}
+  .modal{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;align-items:center;justify-content:center;padding:16px}
+  .modal.open{display:flex}
+  .panel{background:#fff;border:1px solid #eee;padding:16px;width:720px;max-width:100%}
+  table{width:100%;border-collapse:collapse;margin-top:8px}
+  th,td{border:1px solid #eee;padding:8px;text-align:center}
+  th{background:#fafafa}
+</style>
 </head>
 <body>
 
 <header>
-  <h1>Agile Fit • Colección</h1>
-  <a href="index.html">← Volver al inicio</a>
+  <div class="container header-in">
+    <div class="brand">
+      <img src="https://github.com/agostinaperez2/agile-fit/blob/main/ChatGPT%20Image%207%20oct%202025,%2004_56_26%20p.m..png?raw=true" alt="Agile Fit" onerror="this.style.display='none'"/>
+      <span style="letter-spacing:4px;font-size:12px">AGILE FIT</span>
+    </div>
+    <nav class="nav" aria-label="Líneas">
+      <button class="tab" data-line="Berry">BERRY</button>
+      <button class="tab" data-line="Cocoa">COCOA</button>
+      <button class="tab" data-line="Merlot">MERLOT</button>
+    </nav>
+    <div class="row">
+      <button class="btn secondary" id="tallesBtn">Tabla de talles</button>
+      <span class="pill">🛒 <span id="cartCount">0</span></span>
+    </div>
+  </div>
 </header>
 
-<section class="coleccion">
-  <h2>Línea Berry</h2>
-  <div class="productos">
-    <div class="producto">
-      <img src="https://jahnisioriginals.com.ar/cdn/shop/files/berry-1.jpg?v=1710000000" alt="Berry Set">
-      <div class="nombre">Berry Set</div>
-      <div class="precio">$25.000</div>
-      <button>Agregar al carrito</button>
-    </div>
-    <div class="producto">
-      <img src="https://jahnisioriginals.com.ar/cdn/shop/files/berry-2.jpg?v=1710000000" alt="Berry Short">
-      <div class="nombre">Berry Short</div>
-      <div class="precio">$21.000</div>
-      <button>Agregar al carrito</button>
+<main class="container">
+  <div class="toolbar">
+    <div class="muted">Colección • <span id="currentLine">Todas</span></div>
+    <div class="row">
+      <button class="btn secondary" id="autoFotos">Auto-fotos</button>
+      <button class="btn secondary" id="refrescar">Refrescar</button>
     </div>
   </div>
-</section>
 
-<section class="coleccion">
-  <h2>Línea Cocoa</h2>
-  <div class="productos">
-    <div class="producto">
-      <img src="https://jahnisioriginals.com.ar/cdn/shop/files/cocoa-1.jpg?v=1710000000" alt="Cocoa Set">
-      <div class="nombre">Cocoa Set</div>
-      <div class="precio">$28.000</div>
-      <button>Agregar al carrito</button>
-    </div>
-    <div class="producto">
-      <img src="https://jahnisioriginals.com.ar/cdn/shop/files/cocoa-2.jpg?v=1710000000" alt="Cocoa Legging">
-      <div class="nombre">Cocoa Legging</div>
-      <div class="precio">$23.000</div>
-      <button>Agregar al carrito</button>
-    </div>
-  </div>
-</section>
+  <section>
+    <h2 id="tituloLinea">Todas</h2>
+    <div class="grid" id="grid"></div>
+  </section>
+</main>
 
-<section class="coleccion">
-  <h2>Línea Merlot</h2>
-  <div class="productos">
-    <div class="producto">
-      <img src="https://jahnisioriginals.com.ar/cdn/shop/files/merlot-1.jpg?v=1710000000" alt="Merlot Set">
-      <div class="nombre">Merlot Set</div>
-      <div class="precio">$27.000</div>
-      <button>Agregar al carrito</button>
-    </div>
-    <div class="producto">
-      <img src="https://jahnisioriginals.com.ar/cdn/shop/files/merlot-2.jpg?v=1710000000" alt="Merlot Top">
-      <div class="nombre">Merlot Top</div>
-      <div class="precio">$19.000</div>
-      <button>Agregar al carrito</button>
-    </div>
-  </div>
-</section>
+<footer class="footer">© 2025 Agile Fit Activewear — Todos los derechos reservados</footer>
 
-<footer>
-  © 2025 Agile Fit Activewear — Todos los derechos reservados
-</footer>
-
-</body>
-</html>
+<!-- Modal tabla de talles -->
+<div class="modal" id="modalTalles">
+  <div class="panel">
+    <div class="row" style="justify-content:space-between">
+      <h3 style="margin:0">Tabla de talles (guía orientativa)</h3>
+      <button class="btn secondary" id="cerrarTalles">Cerrar</button>
+    </div>
+    <h4 style="margin-top:12px">Tops / Bustier</h4>
+    <table>
+      <tr><th>Talle</th><th>Busto (cm)</th><th>Espalda (cm)</th></tr>
+      <tr><td>XS</td><td>78-84</td><td>63-68</td></tr>
+      <tr><td>S</td><td>85-90</td><td>69-74</td></tr>
+      <tr><td>M</td><td>91-96</td><td>75-80</td></tr>
+      <tr><td>L</td><td>97-103</td><td>81-86</td></tr>
+      <tr><td>XL</td><td>104-110</td><td>87-92</td></tr>
+    </table>
+    <h4 style="margin-top:16px">Bottoms (leggings/shorts)</h4>
+    <table>
+      <tr><th>Talle</th><th>Cintura (cm)</th><th>Cadera (cm)</th></tr>
+      <tr><td>XS</td><td>58-63</td><td>84-89</td></tr>
