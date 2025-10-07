@@ -93,3 +93,56 @@
     <table>
       <tr><th>Talle</th><th>Cintura (cm)</th><th>Cadera (cm)</th></tr>
       <tr><td>XS</td><td>58-63</td><td>84-89</td></tr>
+      <tr><td>S</td><td>64-69</td><td>90-95</td></tr>
+      <tr><td>M</td><td>70-76</td><td>96-102</td></tr>
+      <tr><td>L</td><td>77-84</td><td>103-110</td></tr>
+      <tr><td>XL</td><td>85-92</td><td>111-118</td></tr>
+    </table>
+  </div>
+</div>
+
+<script>
+const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRrw-tt87mw8S_p8hCbedod-pwZMzXgJQ5Ey4-Hb_O_BpRpC9moQUP3CICLwYg9LT-vS825s7MiO6_y/pub?gid=9643623&single=true&output=csv";
+
+const JAH_COLLECTIONS = {
+  Berry: "https://jahnisioriginals.com.ar/trascendencia/berry/",
+  Cocoa: "https://jahnisioriginals.com.ar/trascendencia/cocoa/",
+  Merlot:"https://jahnisioriginals.com.ar/trascendencia/merlot/"
+};
+
+const FORCED_SIZES = {};
+
+const currency = n => new Intl.NumberFormat("es-AR",{style:"currency",currency:"ARS",maximumFractionDigits:0}).format(Number(n||0));
+function parseCSV(t){const l=t.replace(/\r/g,"").split("\n").filter(Boolean);if(!l.length)return[];const h=l[0].split(",").map(h=>h.trim().toLowerCase());return l.slice(1).map(line=>{const c=line.split(",");const r={};h.forEach((hh,i)=>r[hh]=(c[i]||"").trim());return r;});}
+let products=[],cart=JSON.parse(localStorage.getItem("agile.cart")||"[]");
+const saveCart=()=>localStorage.setItem("agile.cart",JSON.stringify(cart));
+const updateCartCount=()=>document.getElementById("cartCount").textContent=cart.reduce((s,i)=>s+i.qty,0);
+
+async function loadSheet(){
+  const res=await fetch(SHEET_CSV_URL);
+  const rows=parseCSV(await res.text());
+  return rows.map(r=>({nombre:r.nombre,precio:r.precio,linea:r.linea}));
+}
+
+function render(){
+  const grid=document.getElementById("grid");
+  grid.innerHTML="";
+  products.forEach(p=>{
+    const card=document.createElement("div");
+    card.className="card";
+    card.innerHTML=`
+      <div style="height:260px;background:#f5f5f5"></div>
+      <div style="font-size:14px;margin-top:8px">${p.nombre}</div>
+      <div style="font-weight:600">${currency(p.precio)}</div>`;
+    grid.appendChild(card);
+  });
+}
+
+(async function init(){
+  products=await loadSheet();
+  updateCartCount();
+  render();
+})();
+</script>
+</body>
+</html>
