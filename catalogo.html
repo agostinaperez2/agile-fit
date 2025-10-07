@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agile Fit - Colección</title>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #fff;
+      color: #111;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      text-align: center;
+      padding: 30px 10px;
+      border-bottom: 1px solid #eee;
+    }
+    header h1 {
+      font-weight: 400;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+    header a {
+      text-decoration: none;
+      color: #666;
+      font-size: 0.9rem;
+    }
+    .coleccion {
+      padding: 50px 20px;
+      text-align: center;
+    }
+    h2 {
+      font-weight: 300;
+      margin-bottom: 30px;
+      letter-spacing: 1px;
+    }
+    .productos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 30px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .producto {
+      border: 1px solid #eee;
+      padding: 15px;
+      transition: 0.2s;
+    }
+    .producto:hover {
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transform: translateY(-3px);
+    }
+    .producto img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+    }
+    .nombre {
+      margin: 10px 0 5px;
+      font-weight: 500;
+    }
+    .precio {
+      color: #666;
+      margin-bottom: 10px;
+    }
+    button {
+      background: #111;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: 0.3s;
+      font-size: 0.9rem;
+    }
+    button:hover {
+      background: #333;
+    }
+    footer {
+      text-align: center;
+      margin: 60px 0 20px;
+      color: #999;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Agile Fit • Colección</h1>
+  <a href="index.html">← Volver al inicio</a>
+</header>
+
+<section class="coleccion">
+  <h2>Línea Berry</h2>
+  <div class="productos">
+    <div class="producto">
+      <img src="https://jahnisioriginals.com.ar/cdn/shop/files/berry-1.jpg?v=1710000000" alt="Berry Set">
+      <div class="nombre">Berry Set</div>
+      <div class="precio">$25.000</div>
+      <button>Agregar al carrito</button>
+    </div>
+    <div class="producto">
+      <img src="https://jahnisioriginals.com.ar/cdn/shop/files/berry-2.jpg?v=1710000000" alt="Berry Short">
+      <div class="nombre">Berry Short</div>
+      <div class="precio">$21.000</div>
+      <button>Agregar al carrito</button>
+    </div>
+  </div>
+</section>
+
+<section class="coleccion">
+  <h2>Línea Cocoa</h2>
+  <div class="productos">
+    <div class="producto">
+      <img src="https://jahnisioriginals.com.ar/cdn/shop/files/cocoa-1.jpg?v=1710000000" alt="Cocoa Set">
+      <div class="nombre">Cocoa Set</div>
+      <div class="precio">$28.000</div>
+      <button>Agregar al carrito</button>
+    </div>
+    <div class="producto">
+      <img src="https://jahnisioriginals.com.ar/cdn/shop/files/cocoa-2.jpg?v=1710000000" alt="Cocoa Legging">
+      <div class="nombre">Cocoa Legging</div>
+      <div class="precio">$23.000</div>
+      <button>Agregar al carrito</button>
+    </div>
+  </div>
+</section>
+
+<section class="coleccion">
+  <h2>Línea Merlot</h2>
+  <div class="productos">
+    <div class="producto">
+      <img src="https://jahnisioriginals.com.ar/cdn/shop/files/merlot-1.jpg?v=1710000000" alt="Merlot Set">
+      <div class="nombre">Merlot Set</div>
+      <div class="precio">$27.000</div>
+      <button>Agregar al carrito</button>
+    </div>
+    <div class="producto">
+      <img src="https://jahnisioriginals.com.ar/cdn/shop/files/merlot-2.jpg?v=1710000000" alt="Merlot Top">
+      <div class="nombre">Merlot Top</div>
+      <div class="precio">$19.000</div>
+      <button>Agregar al carrito</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2025 Agile Fit Activewear — Todos los derechos reservados
+</footer>
+
+</body>
+</html>
